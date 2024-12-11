@@ -1,17 +1,18 @@
 import { useState } from "react";
 import "../styles/form.css"
 
-export default function Form() {
+export default function Form({ onFormValues }) {
     const [value, setValue] = useState({
         firstname: '',
         lastname: '',
+        phone: '',
         email: '',
         schoolname: '',
         year: '',
         course: '',
         company: '',
         position: '',
-        responsibilities: '',
+        responsibiliiest: '',
         yearexperience: '', 
     });
 
@@ -30,6 +31,7 @@ export default function Form() {
                         name="firstname"
                         type="text"
                         value={value.firstname}
+                        placeholder="Juan"
                         onChange={handleValue}
                     />
                 </label>
@@ -40,6 +42,18 @@ export default function Form() {
                         name="lastname" 
                         type="text"
                         value={value.lastname}
+                        placeholder="Luna"
+                        onChange={handleValue}
+                    />
+                </label>
+                <br />
+                <label>
+                    Phone:
+                    <input 
+                        name="phone"
+                        type="text"
+                        value={value.phone}
+                        placeholder="5555-555-555"
                         onChange={handleValue}
                     />
                 </label>
@@ -50,6 +64,7 @@ export default function Form() {
                         name="email"
                         type="text"
                         value={value.email}
+                        placeholder="juanluna@gmail.com"
                         onChange={handleValue}
                     />
                 </label>
@@ -62,6 +77,7 @@ export default function Form() {
                         type="text"
                         name="schoolname"
                         value={value.schoolname} 
+                        placeholder="Manila University"
                         onChange={handleValue}
                     />
                 </label>
@@ -72,6 +88,8 @@ export default function Form() {
                         type="number"
                         name="year"
                         value={value.year} 
+                        placeholder="2000"
+                        min={2000}
                         onChange={handleValue}
                     />
                 </label>
@@ -94,7 +112,8 @@ export default function Form() {
                     <input 
                         type="text"
                         name="company"
-                        value={value.company} 
+                        value={value.company}
+                        placeholder="FAANG" 
                         onChange={handleValue}
                     />
                 </label>
@@ -104,7 +123,8 @@ export default function Form() {
                     <input 
                         type="text"
                         name="position"
-                        value={value.position} 
+                        value={value.position}
+                        placeholder="Product manager" 
                         onChange={handleValue}
                     />
                 </label>
@@ -125,14 +145,16 @@ export default function Form() {
                         type="number"
                         name="yearexperience"
                         value={value.yearexperience} 
+                        placeholder="2000"
+                        min={2000}
                         onChange={handleValue}
                     />
                 </label>
             </section>
             
-            <button onClick={(e) => {
+            <button className="btn" onClick={(e) => {
                 e.preventDefault();
-                console.log(value)
+                onFormValues(value)
             }}>Done!</button>
         </form>
     )
